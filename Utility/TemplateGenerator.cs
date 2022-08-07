@@ -5,35 +5,42 @@ namespace rdlc_test_app.Utility;
 public static class TemplateGenerator
 {
     public static string GetHTMLString()
-    {
+    {  
+	    var membershipNo = "AUH0001";
+	    var date = "01/01/2020";
+	    var fullName = "Muhammed Rafi";
+	    var district = "KASARAGOAD";
+	    var mandalam = "TRIKARPUR";
+	    var emirate = "DUBAI";
+	    var area = "AUH";
+	    var collectedBy = "Rafi";
         var employees = DataStorage.GetAllEmployees();
         var sb = new StringBuilder();
-        sb.Append(@"
-                    <html>
-                        <head>
-                        </head>
-                        <body>
-                            <div class='header'><h1>This is the generated PDF report!!!</h1></div>
-                            <table align='center'>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>LastName</th>
-                                    <th>Age</th>
-                                    <th>Gender</th>
-                                </tr>");
-            foreach (var emp in employees)
-            {
-                sb.AppendFormat(@"<tr>
-                                    <td>{0}</td>
-                                    <td>{1}</td>
-                                    <td>{2}</td>
-                                    <td>{3}</td>
-                                    </tr>", emp.Name, emp.LastName, emp.Age, emp.Gender);
-            }
-            sb.Append(@"
-                            </table>
-                        </body>
-                    </html>");
-        return sb.ToString();
-    }
+        sb.Append(@"<html>
+					<head>
+					</head>
+					<body>
+						<div class='id-card-holder'>
+							<div class='id-card'>
+								<div class='header'>
+									<img src='http://member.uaekmcc.com/_next/image?url=%2Fimages%2Fmembership_card_header.png&w=128&q=75'>
+								</div>
+								<div class='photo'>
+								</div>
+								<h2>Name : </h2>
+								<div class='qr-code'>
+								</div>
+								<h3>Membership No : <strong></strong></h3>
+								<hr>
+								<p>Registration Date<p>
+								<p>District </p>
+								<p>Muncipality/Mandalam </p>
+						  <p>Emirates Area </p>
+						  <p>Agent </p>
+							</div>
+						</div>
+					</body>
+</html>");
+						return sb.ToString();
+				}
 }
